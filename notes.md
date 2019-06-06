@@ -186,7 +186,14 @@ Because increasing dimension usually reduces the number of particular object-set
  1. Suche Teilräume mit 'hohem Kontrast' 
  Hoher Kontrast is definiert über die Wahrscheinlichkeitsverteilung (PDF) einer Dimension im Vergleich zur Joint PDF mehrerer Dimensionen. Weicht die Verteilung der Kombination stark von der Verteilung bei Annahme von Unabhängigkeit ab, so ist der Teilraum vermutlich *interessant*. 
  Generiere dazu die Conditional PDF, indem man kleine Streifen über einzelne Dimensionen legt. Wie groß sind diese Streifen? Definition nicht über breite, sondern Menge der Datenobjekte aus dem Datenbestand. 
- 2. 
+ 
+
+ ### GMD 
+ **Motivation**: Contrast alone leads to redudant results of dimension-subsets. 
+ **Solution:** Iterating over each of the dimensions, order the remaining dimensions $j$ according to the contrast that the subspace would have if the fixed dimension is combined with $j$. 
+
+ ### Object-basiertes Clustering. 
+ 
 
 
  [^1]: hics original paper http://data.bit.uni-bonn.de/publications/ICDE2012.pdf
