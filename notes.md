@@ -188,11 +188,51 @@ Because increasing dimension usually reduces the number of particular object-set
  Generiere dazu die Conditional PDF, indem man kleine Streifen über einzelne Dimensionen legt. Wie groß sind diese Streifen? Definition nicht über breite, sondern Menge der Datenobjekte aus dem Datenbestand. 
  
 
- ### GMD 
+ ### Greedy Maximum Deviation (GMD)
  **Motivation**: Contrast alone leads to redudant results of dimension-subsets. 
  **Solution:** Iterating over each of the dimensions, order the remaining dimensions $j$ according to the contrast that the subspace would have if the fixed dimension is combined with $j$. 
 
  ### Object-basiertes Clustering. 
+ - Consider subspace pools. (*'This representation is from the perspective of one data object!'*)
+ - Given k dimensions consider subspaces with n dimensions (e.g. 12 dimensions in total, 9 in the subspace).
+ - Sort the subspaces in order of the *outlierness* of the object in that subspace. 
+ - Consider the Score Discrepancy for an $l$ dimensional subspace. (e.g. $l=4$ in the example). Look for the subspace in which the contrast between the elements in the subspace pools that contain the $l$ dimension and those that don't is very large. (Formally $\underset{S}{\argmax} \{E[O_S^+] - E[O_S]|\}$)
+
+
+# Change Detection 
+
+**Task Description**: Given an infinite stream of incoming data, which we usually cannot store, detect meaningful changes in the sampling distribution and preferably do so in real time. 
+
+## Quality Criteria 
+ - Mean Time between False Alarms (MTFA)
+ - Mean Time to Detection (MTD) 
+ - Average Run Length
+   - ARL($\delta$) = durchschnittliche Dauer, bis Änderung um $\delta$ zu erkennen. (soll hoch sein für $\delta > 0$ und klein für $\delta = 0$)
+ - 
+
+
+ ## Adaptive Windowing (ADWIN)
+  - Abwägen zwischen großem / kleinen Sliding Window 
+    - Daher: adaptive Fenstergröße: 
+    - Fenster an die Volatilität anpassen. (direkt proportional)
+  - Vergleiche verschiedene Aufteilungen des Sliding Windows auf statistisch signifikante Unterschiede. 
+  - **Problem**: Jede mögliche Aufteilung von $n$ in $n_1, n_2$ wird betrachtet. 
+
+  Stattdessen ADWIN2: 
+   - Datenstruktur anpassen (in Buckets)
+
+## CUSUM 
+ - Funktioniert idealerweise mit Mittelwert 0. 
+ - Betrachte Ausschläge nach oben / unten
+ - Chartverlauf von $S^+, S^-$ vorrechnen können. 
+ 
+## Contextual Time Series Change - CTC
+ - Anderer Anwendungsfall: wir betrachten mehrere Timeseries gleichzeitig und suchen eine Änderung bzw. signifikante Abweichung von einer Kurve im Vergleich zu den anderen. 
+ - Bilde Metriken zwischen zwei Zeitreihen 
+   - $L_\infty$, $L_2$, ... (Problem bei Ausreißern)
+   - statistische Distanz $k$-ter Ordnung. ($k$ größte Distanzen weglassen)
+   - Frage ist: welches $k$? Wähle nach statistischen Tests. 
+
  
 
 
