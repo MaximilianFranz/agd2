@@ -235,5 +235,7 @@ Because increasing dimension usually reduces the number of particular object-set
 
  
 
+# Data Cleaning and Entity Matching 
+
 
  [^1]: hics original paper http://data.bit.uni-bonn.de/publications/ICDE2012.pdf
